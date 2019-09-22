@@ -68,7 +68,7 @@ extension RangeReplaceableCollection {
   /// - Complexity: O(*n* + *c*), where *n* is `self.count` and *c* is the
   ///   number of changes contained by the parameter.
 //  @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-  public func applying(_ difference: CollectionDifference<Element>) -> Self? {
+  public func COMPAT_applying(_ difference: CollectionDifference<Element>) -> Self? {
 
     func append(
       into target: inout Self,
@@ -143,7 +143,7 @@ extension BidirectionalCollection {
   ///   count of this collection and *m* is `other.count`. You can expect
   ///   faster execution when the collections share many common elements.
 //  @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-  public func difference<C: BidirectionalCollection>(
+  public func COMPAT_difference<C: BidirectionalCollection>(
     from other: C,
     by areEquivalent: (C.Element, Element) -> Bool
   ) -> CollectionDifference<Element>
@@ -170,10 +170,10 @@ extension BidirectionalCollection where Element: Equatable {
   ///   faster execution when the collections share many common elements, or
   ///   if `Element` conforms to `Hashable`.
 //  @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-  public func difference<C: BidirectionalCollection>(
+  public func COMPAT_difference<C: BidirectionalCollection>(
     from other: C
   ) -> CollectionDifference<Element> where C.Element == Self.Element {
-    return difference(from: other, by: ==)
+    return COMPAT_difference(from: other, by: ==)
   }
 }
 
